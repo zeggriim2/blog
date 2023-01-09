@@ -18,20 +18,20 @@ class PostType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                "label" => "Titre :"
+                'label' => 'Titre :',
             ])
             ->add('content', TextareaType::class, [
-                "label" => "Article :"
+                'label' => 'Article :',
             ])
             ->add('file', FileType::class, [
-                "mapped" => false,
-                "required" => false,
-                "constraints" => [
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
                     new Image(),
                     new NotNull([
-                        'groups' => 'create'
-                    ])
-                ]
+                        'groups' => 'create',
+                    ]),
+                ],
             ])
         ;
     }

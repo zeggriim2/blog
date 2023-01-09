@@ -125,3 +125,9 @@ composer-update: ## Update composer dependencies.
 	$(COMPOSER_UPDATE)
 .PHONY: composer-update
 #---------------------------------------------#
+
+## === 📦  FIX ==============================================
+cs-fixer:
+	php vendor/bin/php-cs-fixer -vvv
+.PHONY: cs-fixer
+#---------------------------------------------#

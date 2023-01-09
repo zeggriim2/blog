@@ -32,7 +32,7 @@ class Post
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private \DateTimeImmutable $publishedAt;
 
-    #[ORM\OneToMany(mappedBy: "post", targetEntity: "Comment")]
+    #[ORM\OneToMany(mappedBy: 'post', targetEntity: 'Comment')]
     private Collection $comments;
 
     public function __construct()
@@ -46,64 +46,41 @@ class Post
         return $this->id;
     }
 
-    /**
-     * @return string
-     */
     public function getTitle(): string
     {
         return $this->title;
     }
 
-    /**
-     * @param string $title
-     */
     public function setTitle(string $title): void
     {
         $this->title = $title;
     }
 
-    /**
-     * @return string
-     */
     public function getContent(): string
     {
         return $this->content;
     }
 
-    /**
-     * @param string $content
-     */
     public function setContent(string $content): void
     {
         $this->content = $content;
     }
-    /**
-     * @return string
-     */
+
     public function getImage(): string
     {
         return $this->image;
     }
 
-    /**
-     * @param string $image
-     */
     public function setImage(string $image): void
     {
         $this->image = $image;
     }
 
-    /**
-     * @return \DateTimeImmutable
-     */
     public function getPublishedAt(): \DateTimeImmutable
     {
         return $this->publishedAt;
     }
 
-    /**
-     * @param \DateTimeImmutable $publishedAt
-     */
     public function setPublishedAt(\DateTimeImmutable $publishedAt): void
     {
         $this->publishedAt = $publishedAt;

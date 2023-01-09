@@ -9,13 +9,11 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class Uploader implements UploaderInterface
 {
-
     public function __construct(
         private string $uploadsRelativeDir,
         private string $uploadsAbsoluteDir,
         private SluggerInterface $slugger,
-    )
-    {
+    ) {
     }
 
     public function upload(UploadedFile $file): string
@@ -28,6 +26,7 @@ class Uploader implements UploaderInterface
         );
 
         $file->move($this->uploadsAbsoluteDir, $filename);
-        return $this->uploadsRelativeDir . "/" . $filename;
+
+        return $this->uploadsRelativeDir.'/'.$filename;
     }
 }

@@ -28,7 +28,7 @@ class Comment
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     private \DateTimeImmutable $postedAt;
 
-    #[ORM\ManyToOne(targetEntity: "Post", inversedBy: 'comments')]
+    #[ORM\ManyToOne(targetEntity: 'Post', inversedBy: 'comments')]
     private Post $post;
 
     public function __construct()
@@ -41,49 +41,31 @@ class Comment
         return $this->id;
     }
 
-    /**
-     * @return string|null
-     */
     public function getAuthor(): ?string
     {
         return $this->author;
     }
 
-    /**
-     * @param string $author
-     */
     public function setAuthor(string $author): void
     {
         $this->author = $author;
     }
 
-    /**
-     * @return string|null
-     */
     public function getContent(): ?string
     {
         return $this->content;
     }
 
-    /**
-     * @param string $content
-     */
     public function setContent(string $content): void
     {
         $this->content = $content;
     }
 
-    /**
-     * @return \DateTimeImmutable
-     */
     public function getPostedAt(): \DateTimeImmutable
     {
         return $this->postedAt;
     }
 
-    /**
-     * @param \DateTimeImmutable $postedAt
-     */
     public function setPostedAt(\DateTimeImmutable $postedAt): void
     {
         $this->postedAt = $postedAt;

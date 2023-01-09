@@ -10,8 +10,8 @@ use Doctrine\Persistence\ManagerRegistry;
 /**
  * @extends ServiceEntityRepository<Post>
  *
- * @method Post|null find($id, $lockMode = null, $lockVersion = null)
- * @method Post|null findOneBy(array $criteria, array $orderBy = null)
+ * @method null|Post find($id, $lockMode = null, $lockVersion = null)
+ * @method null|Post findOneBy(array $criteria, array $orderBy = null)
  * @method Post[]    findAll()
  * @method Post[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
@@ -42,11 +42,12 @@ class PostRepository extends ServiceEntityRepository
 
     public function getPaginatedPosts(int $page, int $limit): Paginator
     {
-        return new Paginator($this->createQueryBuilder('p')
-            ->addSelect("c")
-            ->join("p.comments", "c")
-            ->setMaxResults($limit)
-            ->setFirstResult(($page - 1) * $limit)
+        return new Paginator(
+            $this->createQueryBuilder('p')
+                ->addSelect('c')
+                ->join('p.comments', 'c')
+                ->setMaxResults($limit)
+                ->setFirstResult(($page - 1) * $limit)
         );
     }
 
