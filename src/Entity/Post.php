@@ -51,9 +51,11 @@ class Post
         return $this->title;
     }
 
-    public function setTitle(string $title): void
+    public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
     }
 
     public function getContent(): string
@@ -61,9 +63,11 @@ class Post
         return $this->content;
     }
 
-    public function setContent(string $content): void
+    public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
     }
 
     public function getImage(): string
@@ -71,9 +75,11 @@ class Post
         return $this->image;
     }
 
-    public function setImage(string $image): void
+    public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
     }
 
     public function getPublishedAt(): \DateTimeImmutable
@@ -81,9 +87,11 @@ class Post
         return $this->publishedAt;
     }
 
-    public function setPublishedAt(\DateTimeImmutable $publishedAt): void
+    public function setPublishedAt(\DateTimeImmutable $publishedAt): self
     {
         $this->publishedAt = $publishedAt;
+
+        return $this;
     }
 
     public function getComments(): Collection
