@@ -29,6 +29,16 @@ COMPOSER_INSTALL = $(COMPOSER) install
 COMPOSER_UPDATE = $(COMPOSER) update
 #------------#
 
+#---YARN-----#
+YARN = yarn
+YARN_INSTALL = $(YARN) add --force
+YARN_UPDATE = $(YARN) upgrade
+YARN_BUILD = $(YARN) run build
+YARN_DEV = $(YARN) run dev
+YARN_WATCH = $(YARN) run watch
+#------------#
+
+
 
 ## === 🆘  HELP ==================================================
 help: ## Show this help.
@@ -124,6 +134,28 @@ composer-install: ## Install composer dependencies.
 composer-update: ## Update composer dependencies.
 	$(COMPOSER_UPDATE)
 .PHONY: composer-update
+#---------------------------------------------#
+
+## === 📦  YARN ===================================================
+yarn-install: ## Install npm dependencies.
+	$(YARN_INSTALL)
+.PHONY: yarn-install
+
+yarn-update: ## Update npm dependencies.
+	$(YARN_UPDATE)
+.PHONY: yarn-update
+
+yarn-build: ## Build assets.
+	$(YARN_BUILD)
+.PHONY: yarn-build
+
+yarn-dev: ## Build assets in dev mode.
+	$(YARN_DEV)
+.PHONY: yarn-dev
+
+yarn-watch: ## Watch assets.
+	$(YARN_WATCH)
+.PHONY: yarn-watch
 #---------------------------------------------#
 
 ## === 📦  FIX ==============================================

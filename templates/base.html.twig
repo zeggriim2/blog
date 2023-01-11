@@ -14,7 +14,8 @@
         {% endblock %}
     </head>
     <body>
-        <div class="container pt-3">
+        {{ include('component/__navbar.html.twig') }}
+        <div class="container pt-2">
             {% block body %}{% endblock %}
         </div>
     </body>

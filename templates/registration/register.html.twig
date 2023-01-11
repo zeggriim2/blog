@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Inscriptin</h1>
+
+    {{ form_start(formRegistration) }}
+        {{ form_row(formRegistration.email) }}
+        {{ form_row(formRegistration.pseudo) }}
+        {{ form_row(formRegistration.password.first) }}
+        {{ form_row(formRegistration.password.second) }}
+        {{ form_row(formRegistration.agreeTerms) }}
+        <button type="submit" class=" btn btn-primary">Register</button>
+    {{ form_end(formRegistration) }}
+{% endblock %}
