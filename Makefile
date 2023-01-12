@@ -51,6 +51,10 @@ help: ## Show this help.
 #---------------------------------------------#
 
 ## === 🆘  INITIALISATION ==================================================
+init-install: ## Initialisation de l'application
+	@make composer-install
+	@make init-prepare
+.PHONY: init-install
 
 init-prepare: ## Initialisation delete BDD, Create BDD, migration, Load Fixtures
 	@make sf-dd
@@ -159,7 +163,13 @@ yarn-watch: ## Watch assets.
 #---------------------------------------------#
 
 ## === 📦  FIX ==============================================
-cs-fixer:
+cs-fixer: ## PHP CS FIXER
 	php vendor/bin/php-cs-fixer -vvv
 .PHONY: cs-fixer
+#---------------------------------------------#
+
+## === 📦  TEST ==============================================
+test-valide: ## Check la validité du schéma de la BDD
+	php bin/console doctrine:schema:validate
+.PHONY: test-valide
 #---------------------------------------------#

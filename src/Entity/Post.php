@@ -33,12 +33,17 @@ class Post
     private \DateTimeImmutable $publishedAt;
 
     #[ORM\OneToMany(mappedBy: 'post', targetEntity: 'Comment')]
+    #[ORM\JoinColumn(name: 'post_tags')]
     private Collection $comments;
+
+    #[ORM\ManyToMany(targetEntity: 'Tag')]
+    private Collection $tags;
 
     public function __construct()
     {
         $this->publishedAt = new \DateTimeImmutable();
         $this->comments = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -51,9 +56,10 @@ class Post
         return $this->title;
     }
 
-    public function setTitle(string $title): void
+    public function setTitle(string $title): self
     {
         $this->title = $title;
+        return $this;
     }
 
     public function getContent(): string
@@ -61,9 +67,10 @@ class Post
         return $this->content;
     }
 
-    public function setContent(string $content): void
+    public function setContent(string $content): self
     {
         $this->content = $content;
+        return $this;
     }
 
     public function getImage(): string
@@ -71,9 +78,10 @@ class Post
         return $this->image;
     }
 
-    public function setImage(string $image): void
+    public function setImage(string $image): self
     {
         $this->image = $image;
+        return $this;
     }
 
     public function getPublishedAt(): \DateTimeImmutable
@@ -81,13 +89,24 @@ class Post
         return $this->publishedAt;
     }
 
-    public function setPublishedAt(\DateTimeImmutable $publishedAt): void
+    public function setPublishedAt(\DateTimeImmutable $publishedAt): self
     {
         $this->publishedAt = $publishedAt;
+        return $this;
     }
 
     public function getComments(): Collection
     {
         return $this->comments;
+    }
+
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    public function setTags(Collection $tags): void
+    {
+        $this->tags = $tags;
     }
 }

@@ -7,13 +7,12 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-class RegistrationController extends AbstractController
+final class RegistrationController extends AbstractController
 {
     #[Route(path: '/inscription', name: 'app_registration_register')]
     public function register(
@@ -26,7 +25,6 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class, $user)->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            dd($form->getData());
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,

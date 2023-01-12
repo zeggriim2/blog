@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12 col-lg-4 col-xl-3">
+            <img src="{{ asset(post.image) }}" alt="{{ post.title }}" class="mw-100">
+        </div>
+        <div class="col-12 col-lg-8 col-xl-9">
+            <h1>{{ post.title }}</h1>
+            <span class="text-muted small">Publié le {{ post.publishedAt |date('d/m/Y H:i') }}</span>
+            <p class="m-0 mt-2">
+                {{ post.content|u.truncate(25, '...', false) }}
+            </p>
+        </div>
+    </div>
+{% endblock %}
+

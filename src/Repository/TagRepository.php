@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Comment;
+use App\Entity\Tag;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Comment>
+ * @extends ServiceEntityRepository<Tag>
  *
- * @method null|Comment find($id, $lockMode = null, $lockVersion = null)
- * @method null|Comment findOneBy(array $criteria, array $orderBy = null)
- * @method Comment[]    findAll()
- * @method Comment[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method null|Tag find($id, $lockMode = null, $lockVersion = null)
+ * @method null|Tag findOneBy(array $criteria, array $orderBy = null)
+ * @method Tag[]    findAll()
+ * @method Tag[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-final class CommentRepository extends ServiceEntityRepository
+final class TagRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Comment::class);
+        parent::__construct($registry, Tag::class);
     }
 
-    public function save(Comment $entity, bool $flush = false): void
+    public function save(Tag $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ final class CommentRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Comment $entity, bool $flush = false): void
+    public function remove(Tag $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ final class CommentRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Comment[] Returns an array of Comment objects
+//     * @return Tag[] Returns an array of Tag objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ final class CommentRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Comment
+//    public function findOneBySomeField($value): ?Tag
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')
